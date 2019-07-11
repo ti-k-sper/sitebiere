@@ -180,6 +180,8 @@ Renommez config_sample.php en config.php
 
 - Page "Panier"  
 - Page "Contact"
+- Récupérer vérification mail/compte (fusion biereblog)
+- Envoie mail avec facture
 - Pages "CGV" et "Mentions légales"
 - CSS en responsive "first mobil"
 - Nettoyage du code (enlever les dd() et les dumps())

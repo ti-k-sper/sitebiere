@@ -1,0 +1,37 @@
+{% extends 'layout/default_beer.twig' %}
+
+{% block body %}
+<h1 class="titreduhaut text-center mt-5">Détail de votre panier</h1>
+<section id="commandSection" class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nomination</th>
+				<th>Prix HT</th>
+				<th>Prix TTC</th>
+				<th>Quantité</th>
+				<th>Total TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for ordersline in orderslines %}
+				<tr>
+					<td>{{ ordersline.title }}</td>
+					<td>{{ ordersline.beerPriceHT| number_format(2, ',', '.') }}€</td>
+					<td>{{ (ordersline.beerPriceHT * ordertva)| number_format(2, ',', '.') }}€</td>
+					<td>{{ ordersline.beerQty }}</td>
+					<td>{{ ((ordersline.beerPriceHT * ordertva) * (ordersline.beerQty))| number_format(2, ',', '.') }}€</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<td><strong>Total TTC</strong></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><strong>{{ ((orderpriceHT)*(ordertva))| number_format(2, ',', '.') }}€</strong></td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align: center">Bonjour, {{ user.lastname }} {{ user.firstname }}, vous trouverez ci-dessus le détail de votre commande.</br>Vouz pouvez la retrouver dans votre espace "profil".</p>
+</section>
+{% endblock %}

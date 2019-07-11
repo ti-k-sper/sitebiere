@@ -20,35 +20,10 @@ class ShopController extends Controller
     }
 
     public function all() {
-        dump($_SESSION);
         $beers = $this->beer->all();
         $id_config = $this->config->last();
         $info_config = $this->config->find($id_config);
         $tva = $info_config->getTva();
-
-        if (count($_POST) > 0) {
-            foreach($_POST['qty'] as $key => $value) {
-                if($value > 0) {
-                    $id = $key;
-                    $qty = $value;
-                }
-            }
-            $beer = $this->beer->find($id);
-            $token = substr(md5(uniqid()), 0, 10);
-            dump($_SESSION);
-            $user_id = $_SESSION['user']->getId();    
-            $beer_id = $beer->getId();
-            $beerPriceHT = $beer->getPriceHT();
-            $beerQty = $qty;
-            $beerOrderLine = [
-                "user_id" => $user_id,
-                "beer_id" => $beer_id,
-                "beerPriceHT" => $beerPriceHT,
-                "beerQty" => $beerQty,
-                "token" => $token
-            ];
-            $orderLine = $this->orders_line->create($beerOrderLine);
-        }
         
         return $this->render('shop/boutique', [
             'beers' => $beers,
@@ -127,8 +102,43 @@ class ShopController extends Controller
         ]);
     }
 
+    public function showPanier() {
+        
+        return $this->render('shop/panier', [
+            'beers' => $beers,
+            'tva' => $tva
+        ]);
+    }
+
+    public function addToPanier()
+    {
+        if (count($_POST) > 0) {
+            foreach($_POST['qty'] as $key => $value) {
+                if($value > 0) {
+                    $id = $key;
+                    $qty = $value;
+                }
+            }
+            $beer = $this->beer->find($id);
+            $token = 'visiteurtk';
+            $user_id = '0';    
+            $beer_id = $beer->getId();
+            $beerPriceHT = $beer->getPriceHT();
+            $beerQty = $qty;
+            $beerOrderLine = [
+                "user_id" => $user_id,
+                "beer_id" => $beer_id,
+                "beerPriceHT" => $beerPriceHT,
+                "beerQty" => $beerQty,
+                "token" => $token
+            ];
+            $orderLine = $this->orders_line->create($beerOrderLine);
+        }
+    }
+
     public function contact() {
         return $this->render('shop/contact', [
         ]);
     }
+
 }
