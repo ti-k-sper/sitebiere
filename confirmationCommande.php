@@ -1,13 +1,19 @@
 <?php 
+require 'connect.php';
+require 'db.php';
 
-include('ressource_fiche_biere.php');
+//include('ressource_fiche_biere.php');
+$TVA = 1.2;
+$sql = 'SELECT * FROM `biere`';
+$statement = $pdo->query($sql);
+$tabbeer = $statement->fetchAll();
 
-var_dump($_GET);
+//var_dump($tabbeer);
 //die;
 
-if(isset($_GET['firstname'])) :
+if(isset($_POST['firstname'])) :
 		$totalTTC = 0; ?>
-		<h1 style='text-align: center'>Bonjour <?= $_GET['firstname'] ?> <?= $_GET['lastname'] ?> !</h1>
+		<h1 style='text-align: center'>Bonjour <?= $_POST['firstname'] ?> <?= $_POST['lastname'] ?> !</h1>
 		<h3 style='text-align: center'>Voici donc ta confirmation de commande</h3>
 
 		<table style="width: 80%;margin-left:10%; text-align:center;" class="">
@@ -22,17 +28,17 @@ if(isset($_GET['firstname'])) :
 			</thead>
 			<tbody>
 				<?php
-				foreach ($beerArray as $key => $value) :
-					if($_GET['quantity'][$key] > 0) : ?>
+				foreach ($tabbeer as $key => $value) :
+					if($_POST['quantity'][$key] > 0) : ?>
 						<tr>
-							<td><?= $value[0] ?></td>
-							<td><?= number_format($value[3], 2, ',', '.')?>€</td>
-							<td><?= number_format($value[3] * $TVA, 2, ',', '.') ?>€</td>
-							<td><?= $_GET['quantity'][$key] ?></td>
-							<td><?= number_format(($value[3] * $TVA)*$_GET['quantity'][$key], 2, ',', '.') ?>€</td>
+							<td><?= $value[1] ?></td>
+							<td><?= number_format($value[4], 2, ',', '.')?>€</td>
+							<td><?= number_format($value[4] * $TVA, 2, ',', '.') ?>€</td>
+							<td><?= $_POST['quantity'][$key] ?></td>
+							<td><?= number_format(($value[4] * $TVA)*$_POST['quantity'][$key], 2, ',', '.') ?>€</td>
 						</tr>
 						<?php
-							$totalTTC += ($value[3] * $TVA)*$_GET['quantity'][$key];
+							$totalTTC += ($value[3] * $TVA)*$_POST['quantity'][$key];
 					endif ;
 				endforeach; ?>
 				<tr>
@@ -44,7 +50,7 @@ if(isset($_GET['firstname'])) :
 				</tr>
 			</tbody>
 		</table>
-		<p style="text-align: center;">Celle-ci vous sera livrée au <?= $_GET['address'] ?> <?= $_GET['zipcode'] ?> <?= $_GET['city'] ?> sous deux jours</p>
+		<p style="text-align: center;">Celle-ci vous sera livrée au <?= $_POST['address'] ?>, <?= $_POST['zipcode'] ?> <?= $_POST['city'] ?>, sous deux jours</p>
 		<p style="text-align:center;">
 			<small>Si vous ne réglez pas sous 10 jours, le prix de votre commande sera majorée.(25%/jours de retard)</small>
 		</p>

@@ -1,6 +1,8 @@
 <?php
+//fichier pouvant servir pour remplir table biere
+// /!\ mettre en commentaire les produits déjà insérer
 $beerArray = [
-		[
+		/*[
 			'La Chouffe Blonde D\'ardenne',
 			'https://www.beerwulf.com/globalassets/catalog/beerwulf/beers/la-chouffe-blonde-d-ardenne_opt.png?h=500&rev=899257661',
 			'Bière dorée légèrement trouble à mousse dense, avec un parfum épicé aux notes d’agrumes et de coriandre qui ressortent également au goût.',
@@ -53,7 +55,7 @@ $beerArray = [
 			'https://www.beerwulf.com/globalassets/catalog/beerwulf/beers/chimay---wit_v2.png?h=500&rev=420719671',
 			'Robe de couleur doré clair, légèrement trouble avec une belle mousse blanche qui fera saliver les amateurs. Le nez et la bouche sont chargés de fruits comme le raisin et de levure. Une amertume ronde se dégage en fin de bouche.',
 			1.57
-		]
+		]*/
 	];
 $TVA = 1.2;//tva à 20%
-?>
+
