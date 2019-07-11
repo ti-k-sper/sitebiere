@@ -9,29 +9,57 @@ class OrdersEntity extends Entity
 {
     private $id;
 
-    private $id_user;
+    private $userInfos_id;
 
-    private $ids_product;
+    private $priceHT;
 
-    private $priceTTC;
+    private $port;
+
+    private $ordersTva;
+
+    private $created_at;
+
+    private $status_id;
+
+    private $token;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getId_user()
+    public function getUserInfosId()
     {
-        return $this->id_user;
+        return $this->userInfos_id;
     }
 
-    public function getIds_product()
+    public function getPriceHT()
     {
-        return unserialize($this->ids_product);
+        return $this->priceHT;
     }
 
-    public function getPriceTTC()
+    public function getPort()
     {
-        return $this->priceTTC;
+        return $this->port;
+    }
+
+    public function getOrdersTva()
+    {
+        return $this->ordersTva;
+    }
+
+    public function getCreated_at()
+    {
+        return new \DateTime($this->created_at);
+    }
+
+    public function getStatusId()
+    {
+        return $this->status_id;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
     }
 }

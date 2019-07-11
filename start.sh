@@ -7,17 +7,18 @@ else
     exit 1
 fi
 
+
 docker-compose build
 
 docker-compose -f docker-compose.yml up -d
 
 sleep 10;
 
-docker exec blogbiere composer update
+docker exec labiere composer update
 
-sleep 4;
+sleep 10;
 
-docker exec blogbiere php commande/createsql.php
+docker exec labiere php commande/createsql.php
 
 echo
 echo "#-----------------------------------------------------------"

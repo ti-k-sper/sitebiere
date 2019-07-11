@@ -150,8 +150,21 @@ Renommez config_sample.php en config.php
 - Création du fichier twig confirmOrder.twig
 
 
+## Version 7 : évolution fusion avec uml (récupération fusion formateur)
+
+#### Etape 8 :
+
+- Suite au cours sur l'UML (dans www/public/assets/source/biereblog_uml.png) et de la récupération des fichiers du formateur, faire les mêmes étapes que la version 6
+
+#### WIP :
+
+- Ajoue au produit, d'un input et d'un button avec un formulaire pour ainsi créer un panier
+- Utiliser AJAX pour remplire table "orders_line"
+
 #### TODO :
 
+- Page "Panier"  
 - Page "Contact"
+- Pages "CGV" et "Mentions légales"
 - CSS en responsive "first mobil"
 - Nettoyage du code (enlever les dd() et les dumps())

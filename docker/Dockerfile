@@ -1,6 +1,6 @@
 FROM chialab/php-dev:7.2-apache
 
-LABEL maintainer="y.chargueraud@hotmail.fr"
+LABEL maintainer="contact@apprendre.co"
 
 ENV APACHE_DOCUMENT_ROOT /var/www/public
 

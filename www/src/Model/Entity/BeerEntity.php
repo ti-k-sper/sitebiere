@@ -8,37 +8,33 @@ use Core\Controller\Helpers\TextController;
 class BeerEntity extends Entity
 {
     private $id;
-
     private $title;
-
     private $img;
-
     private $content;
+    private $priceHT;
+    private $stock;
 
-    private $price;
-
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
-    public function getImg()
-    {
+    public function getImg() {
         return $this->img;
     }
 
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
-    public function getPrice(): float
-    {
-        return $this->price;
+    public function getPriceHT() {
+        return $this->priceHT;
+    }
+
+    public function getStock() {
+        return $this->stock;
     }
 }

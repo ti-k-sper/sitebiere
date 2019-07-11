@@ -14,9 +14,7 @@ class App
     public $title;
 
     private $router;
-
     private $startTime;
-    
     private $db_instance;
 
 
@@ -30,16 +28,13 @@ class App
 
     public static function load()
     {
-        define('TVA', 1.2);
-
-        session_start();
-        
         if (getenv("ENV_DEV")) {
             $whoops = new \Whoops\Run;
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
             $whoops->register();
         }
-
+        define('TVA', 1.2);
+        session_start();
         $numPage = URLController::getPositiveInt('page');
 
         if ($numPage !== null) {

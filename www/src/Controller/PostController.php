@@ -16,12 +16,12 @@ class PostController extends Controller
     {
         $paginatedQuery = new PaginatedQueryAppController(
             $this->post,
-            $this->generateUrl('blog')
+            $this->generateUrl('home')
         );
 
         $postById = $paginatedQuery->getItems();
 
-        $title = 'Tous les articles';
+        $title = 'Mon Super MEGA blog';
         $this->render(
             'post/all',
             [

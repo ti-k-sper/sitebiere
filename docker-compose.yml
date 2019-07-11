@@ -5,34 +5,25 @@ services:
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     build: ./docker
-    image: blogbiere-dev
+    image: blog-dev
     volumes:
       - ${PWD}/www:/var/www
     ports:
       - ${CONTAINER_PORT}:80
     networks:
-      - blogbiere
+      - blog
     env_file:
       - .env
 
   mysql:
-    container_name: ${CONTAINER_MYSQL}
+    container_name:  ${CONTAINER_MYSQL}
     restart: unless-stopped
     image: mariadb
     networks: 
-      - blogbiere
+      - blog
     env_file:
       - .env
 
-  mailcatcher:
-    container_name: mailcatcher
-    restart: unless-stopped
-    image: tophfr/mailcatcher
-    ports:
-      - 1080:80
-    networks: 
-      - blogbiere
-
 networks: 
-  blogbiere:
+  blog:
     driver: bridge

@@ -22,7 +22,7 @@ class RouterController
 
     public function post(string $uri, string $file, string $name): self
     {
-        $this->router->map('POST|GET', $uri, $file, $name);
+        $this->router->map('POST', $uri, $file, $name);
         return $this;
     }
 
