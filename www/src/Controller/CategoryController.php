@@ -50,7 +50,7 @@ class CategoryController extends Controller
             exit();
         }
 
-        $title = 'categorie : ' . $category->getName();
+        $title = 'Catégorie : ' . $category->getName();
 
         $uri = $this->generateUrl("category", ["id" => $category->getId(), "slug" => $category->getSlug()]);
 

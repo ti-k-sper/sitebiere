@@ -51,6 +51,13 @@ header nav div ul li {
   height: 80vh;
 }
 
+/* BLOG  recherche */
+
+.highlight{
+  background: yellow;
+  border: 2px inset grey;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 767.98px) { 
   header nav div ul li {

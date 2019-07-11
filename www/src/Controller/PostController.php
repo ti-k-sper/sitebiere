@@ -21,7 +21,7 @@ class PostController extends Controller
 
         $postById = $paginatedQuery->getItems();
 
-        $title = 'Mon Super MEGA blog';
+        $title = 'Blog du site bière';
         $this->render(
             'post/all',
             [
@@ -51,7 +51,7 @@ class PostController extends Controller
 
         $categories = $this->category->allInId($post->getId());
 
-        $title = "article : " . $post->getName();
+        $title = "Article : " . $post->getName();
 
         $this->render(
             "post/show",
