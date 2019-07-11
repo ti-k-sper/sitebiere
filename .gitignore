@@ -1,3 +1,5 @@
-config.php
-ressources/lock.php
-vendor/
+.env
+.vscode
+www/vendor
+www/public/adminer.php
+www/tests/ExoTest/

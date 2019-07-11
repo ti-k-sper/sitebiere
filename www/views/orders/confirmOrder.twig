@@ -1,0 +1,39 @@
+{% extends "layout/defaultBeerShop.twig" %}
+
+{% block content %}
+<h1 class="titreduhaut">{% block title %}{{ title }}{% endblock %}</h1>
+<h2 style="text-align: center;">Commande n°{{ order.id }}
+<section id="commandSection">
+	<table>
+		<thead>
+			<tr>
+				<th>Nomination</th>
+				<th>Prix HT</th>
+				<th>Prix TTC</th>
+				<th>Quantité</th>
+				<th>Total TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for key, line in lines %}
+				<tr>
+					<td>{{ line.name }}</td>
+					<td>{{ line.price|number_format(2, ',', '.') }}€</td>
+					<td>{{ ((line.price)*(tva|raw))|number_format(2, ',', '.') }}€</td>
+					<td>{{ line.qty }}</td>
+					<td>{{ ((line.price)*(tva|raw)*(line.qty))|number_format(2, ',', '.') }}€</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<td><strong>Total TTC</strong></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><strong>{{ order.priceTTC|number_format(2, ',', '.') }}€</strong></td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align: center;">Madame, Monsieur {{ auth.lastname}} {{ auth.firstname }}, vous trouverez ci dessus un récapitulatif de votre commande, ce récapitulatif est disponible dans votre page profil.</p>
+	<p style="text-align: center;">Celle-ci vous sera livrée au {{ auth.address}}, {{ auth.zipCode }} {{ auth.city }} sous deux jours, après confirmation de votre règlement.</p>
+</section>
+{% endblock %}

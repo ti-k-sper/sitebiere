@@ -1,6 +1,0 @@
-{
-    "require": {
-        "swiftmailer/swiftmailer": "5.4.12",
-        "plasticbrain/php-flash-messages": "^1.0"
-    }
-}
